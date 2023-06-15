@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище YourFitnessModelContainer" CdmEntityContainer="YourFitnessEntities4">
+    <EntitySetMapping Name="Dificulty">
+      <EntityTypeMapping TypeName="YourFitnessModel.Dificulty">
+        <MappingFragment StoreEntitySet="Dificulty">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exercise">
+      <EntityTypeMapping TypeName="YourFitnessModel.Exercise">
+        <MappingFragment StoreEntitySet="Exercise">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="isQtyInSecond" ColumnName="isQtyInSecond" />
+          <ScalarProperty Name="PathToGif" ColumnName="PathToGif" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExerciseWorkout">
+      <EntityTypeMapping TypeName="YourFitnessModel.ExerciseWorkout">
+        <MappingFragment StoreEntitySet="ExerciseWorkout">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDExercise" ColumnName="IDExercise" />
+          <ScalarProperty Name="IDWorkout" ColumnName="IDWorkout" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gender">
+      <EntityTypeMapping TypeName="YourFitnessModel.Gender">
+        <MappingFragment StoreEntitySet="Gender">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HistoryChange">
+      <EntityTypeMapping TypeName="YourFitnessModel.HistoryChange">
+        <MappingFragment StoreEntitySet="HistoryChange">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+          <ScalarProperty Name="NewWeitght" ColumnName="NewWeitght" />
+          <ScalarProperty Name="NewHeight" ColumnName="NewHeight" />
+          <ScalarProperty Name="ImageFront" ColumnName="ImageFront" />
+          <ScalarProperty Name="ImageSide" ColumnName="ImageSide" />
+          <ScalarProperty Name="ImageBack" ColumnName="ImageBack" />
+          <ScalarProperty Name="DataChange" ColumnName="DataChange" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HistoryWorkoutUser">
+      <EntityTypeMapping TypeName="YourFitnessModel.HistoryWorkoutUser">
+        <MappingFragment StoreEntitySet="HistoryWorkoutUser">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDWorkout" ColumnName="IDWorkout" />
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+          <ScalarProperty Name="DateWorkout" ColumnName="DateWorkout" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LikeNewsUser">
+      <EntityTypeMapping TypeName="YourFitnessModel.LikeNewsUser">
+        <MappingFragment StoreEntitySet="LikeNewsUser">
+          <ScalarProperty Name="IDNews" ColumnName="IDNews" />
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+          <ScalarProperty Name="IsLike" ColumnName="IsLike" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LikeWorkout">
+      <EntityTypeMapping TypeName="YourFitnessModel.LikeWorkout">
+        <MappingFragment StoreEntitySet="LikeWorkout">
+          <ScalarProperty Name="IDWorkout" ColumnName="IDWorkout" />
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+          <ScalarProperty Name="IsLike" ColumnName="IsLike" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Message">
+      <EntityTypeMapping TypeName="YourFitnessModel.Message">
+        <MappingFragment StoreEntitySet="Message">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Message1" ColumnName="Message" />
+          <ScalarProperty Name="IDUserSent" ColumnName="IDUserSent" />
+          <ScalarProperty Name="IDUserGet" ColumnName="IDUserGet" />
+          <ScalarProperty Name="TimeSent" ColumnName="TimeSent" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MuscleType">
+      <EntityTypeMapping TypeName="YourFitnessModel.MuscleType">
+        <MappingFragment StoreEntitySet="MuscleType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MuscleTypeExercise">
+      <EntityTypeMapping TypeName="YourFitnessModel.MuscleTypeExercise">
+        <MappingFragment StoreEntitySet="MuscleTypeExercise">
+          <ScalarProperty Name="IDMuscleTypeExercise" ColumnName="IDMuscleTypeExercise" />
+          <ScalarProperty Name="IDMuscleType" ColumnName="IDMuscleType" />
+          <ScalarProperty Name="IDExercise" ColumnName="IDExercise" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News">
+      <EntityTypeMapping TypeName="YourFitnessModel.News">
+        <MappingFragment StoreEntitySet="News">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IDWorkout" ColumnName="IDWorkout" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="timeCreate" ColumnName="timeCreate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NewsComment">
+      <EntityTypeMapping TypeName="YourFitnessModel.NewsComment">
+        <MappingFragment StoreEntitySet="NewsComment">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IDNews" ColumnName="IDNews" />
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+          <ScalarProperty Name="TimeSentComment" ColumnName="TimeSentComment" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReviewUserTrainer">
+      <EntityTypeMapping TypeName="YourFitnessModel.ReviewUserTrainer">
+        <MappingFragment StoreEntitySet="ReviewUserTrainer">
+          <ScalarProperty Name="IDUserTrainer" ColumnName="IDUserTrainer" />
+          <ScalarProperty Name="IDUserReview" ColumnName="IDUserReview" />
+          <ScalarProperty Name="Review" ColumnName="Review" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="YourFitnessModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Service">
+      <EntityTypeMapping TypeName="YourFitnessModel.Service">
+        <MappingFragment StoreEntitySet="Service">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="YourFitnessModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="YourFitnessModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="Salt" ColumnName="Salt" />
+          <ScalarProperty Name="IDGender" ColumnName="IDGender" />
+          <ScalarProperty Name="IDRole" ColumnName="IDRole" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="ImageProfile" ColumnName="ImageProfile" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionTrainer" ColumnName="DescriptionTrainer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Workout">
+      <EntityTypeMapping TypeName="YourFitnessModel.Workout">
+        <MappingFragment StoreEntitySet="Workout">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+          <ScalarProperty Name="IDDificulty" ColumnName="IDDificulty" />
+          <ScalarProperty Name="IDWorkoutType" ColumnName="IDWorkoutType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkoutReaction">
+      <EntityTypeMapping TypeName="YourFitnessModel.WorkoutReaction">
+        <MappingFragment StoreEntitySet="WorkoutReaction">
+          <ScalarProperty Name="IDWorkout" ColumnName="IDWorkout" />
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+          <ScalarProperty Name="TimeSent" ColumnName="TimeSent" />
+          <ScalarProperty Name="Review" ColumnName="Review" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkoutType">
+      <EntityTypeMapping TypeName="YourFitnessModel.WorkoutType">
+        <MappingFragment StoreEntitySet="WorkoutType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetailInformationAboutTrainer">
+      <EntityTypeMapping TypeName="YourFitnessModel.DetailInformationAboutTrainer">
+        <MappingFragment StoreEntitySet="DetailInformationAboutTrainer">
+          <ScalarProperty Name="FIO" ColumnName="FIO" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="AvgRatingWorkout" ColumnName="AvgRatingWorkout" />
+          <ScalarProperty Name="QtyCreatedWorkout" ColumnName="QtyCreatedWorkout" />
+          <ScalarProperty Name="QtyNegative" ColumnName="QtyNegative" />
+          <ScalarProperty Name="Services" ColumnName="Services" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetailInformationAboutWorkout">
+      <EntityTypeMapping TypeName="YourFitnessModel.DetailInformationAboutWorkout">
+        <MappingFragment StoreEntitySet="DetailInformationAboutWorkout">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Dificulty" ColumnName="Dificulty" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="QtyCompletedWorkout" ColumnName="QtyCompletedWorkout" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="ExerciseInWorkout" ColumnName="ExerciseInWorkout" />
+          <ScalarProperty Name="ExerciseInWorkoutDistinct" ColumnName="ExerciseInWorkoutDistinct" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TopNewsForAWeek">
+      <EntityTypeMapping TypeName="YourFitnessModel.TopNewsForAWeek">
+        <MappingFragment StoreEntitySet="TopNewsForAWeek">
+          <ScalarProperty Name="FioCreator" ColumnName="FioCreator" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="timeCreate" ColumnName="timeCreate" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="QtyLikes" ColumnName="QtyLikes" />
+          <ScalarProperty Name="QtyComments" ColumnName="QtyComments" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionName="Хранилище YourFitnessModel.returnHistoryChangeUser" FunctionImportName="returnHistoryChangeUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="YourFitnessModel.returnHistoryChangeUser_Result">
+          <ScalarProperty Name="FS" ColumnName="FS" />
+          <ScalarProperty Name="NewHeight" ColumnName="NewHeight" />
+          <ScalarProperty Name="NewWeitght" ColumnName="NewWeitght" />
+          <ScalarProperty Name="ImageBack" ColumnName="ImageBack" />
+          <ScalarProperty Name="ImageFront" ColumnName="ImageFront" />
+          <ScalarProperty Name="ImageSide" ColumnName="ImageSide" />
+          <ScalarProperty Name="DataChange" ColumnName="DataChange" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getDurationWorkoutInSecProc" FunctionName="Хранилище YourFitnessModel.getDurationWorkoutInSecProc" />
+    <FunctionImportMapping FunctionImportName="qtyHourOnMuscleForUser" FunctionName="Хранилище YourFitnessModel.qtyHourOnMuscleForUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="YourFitnessModel.qtyHourOnMuscleForUser_Result">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="TimeInMinute" ColumnName="TimeInMinute" />
+          <ScalarProperty Name="percent" ColumnName="percent" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="qtyHourWorkoutUser" FunctionName="Хранилище YourFitnessModel.qtyHourWorkoutUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="YourFitnessModel.qtyHourWorkoutUser_Result">
+          <ScalarProperty Name="qtyMinute" ColumnName="qtyMinute" />
+          <ScalarProperty Name="day" ColumnName="day" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="qtyMuscleInWorkout" FunctionName="Хранилище YourFitnessModel.qtyMuscleInWorkout">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="YourFitnessModel.qtyMuscleInWorkout_Result">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="qtyInPercent" ColumnName="qtyInPercent" />
+          <ScalarProperty Name="width" ColumnName="width" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище YourFitnessModel.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище YourFitnessModel.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище YourFitnessModel.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище YourFitnessModel.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="YourFitnessModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище YourFitnessModel.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="YourFitnessModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище YourFitnessModel.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище YourFitnessModel.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

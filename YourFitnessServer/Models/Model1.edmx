@@ -1,0 +1,2075 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище YourFitnessModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Dificulty">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Exercise">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="600" Nullable="false" />
+          <Property Name="isQtyInSecond" Type="bit" Nullable="false" />
+          <Property Name="PathToGif" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="ExerciseWorkout">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDExercise" Type="int" Nullable="false" />
+          <Property Name="IDWorkout" Type="int" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HistoryChange">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDUser" Type="int" Nullable="false" />
+          <Property Name="NewWeitght" Type="int" />
+          <Property Name="NewHeight" Type="int" />
+          <Property Name="ImageFront" Type="varbinary(max)" />
+          <Property Name="ImageSide" Type="varbinary(max)" />
+          <Property Name="ImageBack" Type="varbinary(max)" />
+          <Property Name="DataChange" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HistoryWorkoutUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDWorkout" Type="int" Nullable="false" />
+          <Property Name="IDUser" Type="int" Nullable="false" />
+          <Property Name="DateWorkout" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LikeNewsUser">
+          <Key>
+            <PropertyRef Name="IDNews" />
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="IDNews" Type="int" Nullable="false" />
+          <Property Name="IDUser" Type="int" Nullable="false" />
+          <Property Name="IsLike" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LikeWorkout">
+          <Key>
+            <PropertyRef Name="IDWorkout" />
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="IDWorkout" Type="int" Nullable="false" />
+          <Property Name="IDUser" Type="int" Nullable="false" />
+          <Property Name="IsLike" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IDUserSent" Type="int" Nullable="false" />
+          <Property Name="IDUserGet" Type="int" Nullable="false" />
+          <Property Name="TimeSent" Type="datetime" Nullable="false" />
+          <Property Name="Image" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="MuscleType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MuscleTypeExercise">
+          <Key>
+            <PropertyRef Name="IDMuscleTypeExercise" />
+          </Key>
+          <Property Name="IDMuscleTypeExercise" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDMuscleType" Type="int" Nullable="false" />
+          <Property Name="IDExercise" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDUser" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="IDWorkout" Type="int" />
+          <Property Name="image" Type="varbinary(max)" />
+          <Property Name="timeCreate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewsComment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDNews" Type="int" Nullable="false" />
+          <Property Name="IDUser" Type="int" Nullable="false" />
+          <Property Name="TimeSentComment" Type="datetime" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReviewUserTrainer">
+          <Key>
+            <PropertyRef Name="IDUserTrainer" />
+            <PropertyRef Name="IDUserReview" />
+          </Key>
+          <Property Name="IDUserTrainer" Type="int" Nullable="false" />
+          <Property Name="IDUserReview" Type="int" Nullable="false" />
+          <Property Name="Review" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Rating" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="IDUser" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="SecondName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Salt" Type="nchar" MaxLength="6" Nullable="false" />
+          <Property Name="IDGender" Type="int" Nullable="false" />
+          <Property Name="IDRole" Type="int" Nullable="false" />
+          <Property Name="Birthday" Type="date" Nullable="false" />
+          <Property Name="ImageProfile" Type="varbinary(max)" />
+          <Property Name="Description" Type="nvarchar" MaxLength="380" />
+          <Property Name="DescriptionTrainer" Type="nvarchar" MaxLength="380" />
+        </EntityType>
+        <EntityType Name="Workout">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDUser" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="150" />
+          <Property Name="ImagePath" Type="nvarchar" MaxLength="1000" />
+          <Property Name="IDDificulty" Type="int" />
+          <Property Name="IDWorkoutType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkoutReaction">
+          <Key>
+            <PropertyRef Name="IDWorkout" />
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="IDWorkout" Type="int" Nullable="false" />
+          <Property Name="IDUser" Type="int" Nullable="false" />
+          <Property Name="TimeSent" Type="datetime" Nullable="false" />
+          <Property Name="Review" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Rating" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkoutType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "YourFitness.dbo.DetailInformationAboutTrainer" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="DetailInformationAboutTrainer">
+          <Key>
+            <PropertyRef Name="FIO" />
+            <PropertyRef Name="Mail" />
+            <PropertyRef Name="Login" />
+          </Key>
+          <Property Name="FIO" Type="nvarchar" MaxLength="301" Nullable="false" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="380" />
+          <Property Name="Rating" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="AvgRatingWorkout" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="QtyCreatedWorkout" Type="int" />
+          <Property Name="QtyNegative" Type="int" />
+          <Property Name="Services" Type="nvarchar" MaxLength="4000" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "YourFitness.dbo.DetailInformationAboutWorkout" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="DetailInformationAboutWorkout">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Creator" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="150" />
+          <Property Name="Dificulty" Type="nvarchar" MaxLength="40" />
+          <Property Name="Creator" Type="nvarchar" MaxLength="301" Nullable="false" />
+          <Property Name="QtyCompletedWorkout" Type="int" />
+          <Property Name="Rating" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="ExerciseInWorkout" Type="nvarchar" MaxLength="4000" />
+          <Property Name="ExerciseInWorkoutDistinct" Type="nvarchar" MaxLength="4000" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "YourFitness.dbo.StatiscticsExercise" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="StatiscticsExercise">
+          <Property Name="QtyExercise" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "YourFitness.dbo.StatiscticsExerciseInFinishedWorkout" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="StatiscticsExerciseInFinishedWorkout">
+          <Property Name="QtyExercise" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+        </EntityType>-->
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "YourFitness.dbo.TopNewsForAWeek" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="TopNewsForAWeek">
+          <Key>
+            <PropertyRef Name="FioCreator" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="timeCreate" />
+          </Key>
+          <Property Name="FioCreator" Type="nvarchar" MaxLength="301" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="timeCreate" Type="datetime" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="QtyLikes" Type="int" />
+          <Property Name="QtyComments" Type="int" />
+        </EntityType>
+        <Association Name="FK_Comment_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="WorkoutReaction" Type="Self.WorkoutReaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="WorkoutReaction">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Workout">
+          <End Role="Workout" Type="Self.Workout" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WorkoutReaction" Type="Self.WorkoutReaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workout">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="WorkoutReaction">
+              <PropertyRef Name="IDWorkout" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExerciseWorkout_Exercise">
+          <End Role="Exercise" Type="Self.Exercise" Multiplicity="1" />
+          <End Role="ExerciseWorkout" Type="Self.ExerciseWorkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ExerciseWorkout">
+              <PropertyRef Name="IDExercise" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExerciseWorkout_Workout">
+          <End Role="Workout" Type="Self.Workout" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ExerciseWorkout" Type="Self.ExerciseWorkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workout">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ExerciseWorkout">
+              <PropertyRef Name="IDWorkout" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoryChange_User">
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HistoryChange" Type="Self.HistoryChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HistoryChange">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoryWorkoutUser_User">
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HistoryWorkoutUser" Type="Self.HistoryWorkoutUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HistoryWorkoutUser">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoryWorkoutUser_Workout">
+          <End Role="Workout" Type="Self.Workout" Multiplicity="1" />
+          <End Role="HistoryWorkoutUser" Type="Self.HistoryWorkoutUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workout">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HistoryWorkoutUser">
+              <PropertyRef Name="IDWorkout" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeNewsUser_News">
+          <End Role="News" Type="Self.News" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LikeNewsUser" Type="Self.LikeNewsUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LikeNewsUser">
+              <PropertyRef Name="IDNews" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeNewsUser_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="LikeNewsUser" Type="Self.LikeNewsUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LikeNewsUser">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeWorkout_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="LikeWorkout" Type="Self.LikeWorkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LikeWorkout">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeWorkout_Workout">
+          <End Role="Workout" Type="Self.Workout" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LikeWorkout" Type="Self.LikeWorkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workout">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LikeWorkout">
+              <PropertyRef Name="IDWorkout" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="IDUserSent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_User1">
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="IDUserGet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MuscleTypeExercise_Exercise">
+          <End Role="Exercise" Type="Self.Exercise" Multiplicity="1" />
+          <End Role="MuscleTypeExercise" Type="Self.MuscleTypeExercise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MuscleTypeExercise">
+              <PropertyRef Name="IDExercise" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MuscleTypeExercise_MuscleType">
+          <End Role="MuscleType" Type="Self.MuscleType" Multiplicity="1" />
+          <End Role="MuscleTypeExercise" Type="Self.MuscleTypeExercise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MuscleType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MuscleTypeExercise">
+              <PropertyRef Name="IDMuscleType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Workout">
+          <End Role="Workout" Type="Self.Workout" Multiplicity="0..1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workout">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="IDWorkout" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NewsComment_News">
+          <End Role="News" Type="Self.News" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NewsComment" Type="Self.NewsComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NewsComment">
+              <PropertyRef Name="IDNews" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NewsComment_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="NewsComment" Type="Self.NewsComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NewsComment">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="ReviewUserTrainer" Type="Self.ReviewUserTrainer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ReviewUserTrainer">
+              <PropertyRef Name="IDUserTrainer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_User1">
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ReviewUserTrainer" Type="Self.ReviewUserTrainer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ReviewUserTrainer">
+              <PropertyRef Name="IDUserReview" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Service_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Service" Type="Self.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IDGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IDRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_Dificulty">
+          <End Role="Dificulty" Type="Self.Dificulty" Multiplicity="0..1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dificulty">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="IDDificulty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_User1">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_WorkoutType">
+          <End Role="WorkoutType" Type="Self.WorkoutType" Multiplicity="1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkoutType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="IDWorkoutType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="getAge" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="Date" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="getDurationWorkoutInSec" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="IDWrkout" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getDurationWorkoutInSecProc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDWrkout" Type="int" Mode="In" />
+        </Function>
+        <Function Name="qtyHourOnMuscleForUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDUser" Type="int" Mode="In" />
+        </Function>
+        <Function Name="qtyHourWorkoutUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDUser" Type="int" Mode="In" />
+          <Parameter Name="FirstDate" Type="datetime" Mode="In" />
+          <Parameter Name="SecondDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="qtyMuscleInWorkout" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDWorkout" Type="int" Mode="In" />
+        </Function>
+        <Function Name="returnHistoryChangeUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDUser" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="FS" Type="nvarchar" MaxLength="301" Nullable="false" />
+                <Property Name="NewHeight" Type="int" />
+                <Property Name="NewWeitght" Type="int" />
+                <Property Name="ImageBack" Type="varbinary(max)" />
+                <Property Name="ImageFront" Type="varbinary(max)" />
+                <Property Name="ImageSide" Type="varbinary(max)" />
+                <Property Name="DataChange" Type="date" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Хранилище YourFitnessModelContainer">
+          <EntitySet Name="Dificulty" EntityType="Self.Dificulty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exercise" EntityType="Self.Exercise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExerciseWorkout" EntityType="Self.ExerciseWorkout" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HistoryChange" EntityType="Self.HistoryChange" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HistoryWorkoutUser" EntityType="Self.HistoryWorkoutUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LikeNewsUser" EntityType="Self.LikeNewsUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LikeWorkout" EntityType="Self.LikeWorkout" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MuscleType" EntityType="Self.MuscleType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MuscleTypeExercise" EntityType="Self.MuscleTypeExercise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsComment" EntityType="Self.NewsComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReviewUserTrainer" EntityType="Self.ReviewUserTrainer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Workout" EntityType="Self.Workout" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkoutReaction" EntityType="Self.WorkoutReaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkoutType" EntityType="Self.WorkoutType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetailInformationAboutTrainer" EntityType="Self.DetailInformationAboutTrainer" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DetailInformationAboutTrainer].[FIO] AS [FIO], 
+    [DetailInformationAboutTrainer].[Mail] AS [Mail], 
+    [DetailInformationAboutTrainer].[Login] AS [Login], 
+    [DetailInformationAboutTrainer].[Age] AS [Age], 
+    [DetailInformationAboutTrainer].[Description] AS [Description], 
+    [DetailInformationAboutTrainer].[Rating] AS [Rating], 
+    [DetailInformationAboutTrainer].[AvgRatingWorkout] AS [AvgRatingWorkout], 
+    [DetailInformationAboutTrainer].[QtyCreatedWorkout] AS [QtyCreatedWorkout], 
+    [DetailInformationAboutTrainer].[QtyNegative] AS [QtyNegative], 
+    [DetailInformationAboutTrainer].[Services] AS [Services]
+    FROM [dbo].[DetailInformationAboutTrainer] AS [DetailInformationAboutTrainer]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DetailInformationAboutWorkout" EntityType="Self.DetailInformationAboutWorkout" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DetailInformationAboutWorkout].[Name] AS [Name], 
+    [DetailInformationAboutWorkout].[Description] AS [Description], 
+    [DetailInformationAboutWorkout].[Dificulty] AS [Dificulty], 
+    [DetailInformationAboutWorkout].[Creator] AS [Creator], 
+    [DetailInformationAboutWorkout].[QtyCompletedWorkout] AS [QtyCompletedWorkout], 
+    [DetailInformationAboutWorkout].[Rating] AS [Rating], 
+    [DetailInformationAboutWorkout].[ExerciseInWorkout] AS [ExerciseInWorkout], 
+    [DetailInformationAboutWorkout].[ExerciseInWorkoutDistinct] AS [ExerciseInWorkoutDistinct]
+    FROM [dbo].[DetailInformationAboutWorkout] AS [DetailInformationAboutWorkout]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TopNewsForAWeek" EntityType="Self.TopNewsForAWeek" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TopNewsForAWeek].[FioCreator] AS [FioCreator], 
+    [TopNewsForAWeek].[Description] AS [Description], 
+    [TopNewsForAWeek].[timeCreate] AS [timeCreate], 
+    [TopNewsForAWeek].[Name] AS [Name], 
+    [TopNewsForAWeek].[QtyLikes] AS [QtyLikes], 
+    [TopNewsForAWeek].[QtyComments] AS [QtyComments]
+    FROM [dbo].[TopNewsForAWeek] AS [TopNewsForAWeek]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Comment_User" Association="Self.FK_Comment_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="WorkoutReaction" EntitySet="WorkoutReaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Workout" Association="Self.FK_Comment_Workout">
+            <End Role="Workout" EntitySet="Workout" />
+            <End Role="WorkoutReaction" EntitySet="WorkoutReaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExerciseWorkout_Exercise" Association="Self.FK_ExerciseWorkout_Exercise">
+            <End Role="Exercise" EntitySet="Exercise" />
+            <End Role="ExerciseWorkout" EntitySet="ExerciseWorkout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExerciseWorkout_Workout" Association="Self.FK_ExerciseWorkout_Workout">
+            <End Role="Workout" EntitySet="Workout" />
+            <End Role="ExerciseWorkout" EntitySet="ExerciseWorkout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoryChange_User" Association="Self.FK_HistoryChange_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="HistoryChange" EntitySet="HistoryChange" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoryWorkoutUser_User" Association="Self.FK_HistoryWorkoutUser_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="HistoryWorkoutUser" EntitySet="HistoryWorkoutUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoryWorkoutUser_Workout" Association="Self.FK_HistoryWorkoutUser_Workout">
+            <End Role="Workout" EntitySet="Workout" />
+            <End Role="HistoryWorkoutUser" EntitySet="HistoryWorkoutUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeNewsUser_News" Association="Self.FK_LikeNewsUser_News">
+            <End Role="News" EntitySet="News" />
+            <End Role="LikeNewsUser" EntitySet="LikeNewsUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeNewsUser_User" Association="Self.FK_LikeNewsUser_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="LikeNewsUser" EntitySet="LikeNewsUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeWorkout_User" Association="Self.FK_LikeWorkout_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="LikeWorkout" EntitySet="LikeWorkout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeWorkout_Workout" Association="Self.FK_LikeWorkout_Workout">
+            <End Role="Workout" EntitySet="Workout" />
+            <End Role="LikeWorkout" EntitySet="LikeWorkout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_User" Association="Self.FK_Message_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_User1" Association="Self.FK_Message_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MuscleTypeExercise_Exercise" Association="Self.FK_MuscleTypeExercise_Exercise">
+            <End Role="Exercise" EntitySet="Exercise" />
+            <End Role="MuscleTypeExercise" EntitySet="MuscleTypeExercise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MuscleTypeExercise_MuscleType" Association="Self.FK_MuscleTypeExercise_MuscleType">
+            <End Role="MuscleType" EntitySet="MuscleType" />
+            <End Role="MuscleTypeExercise" EntitySet="MuscleTypeExercise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_User" Association="Self.FK_News_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Workout" Association="Self.FK_News_Workout">
+            <End Role="Workout" EntitySet="Workout" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewsComment_News" Association="Self.FK_NewsComment_News">
+            <End Role="News" EntitySet="News" />
+            <End Role="NewsComment" EntitySet="NewsComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewsComment_User" Association="Self.FK_NewsComment_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="NewsComment" EntitySet="NewsComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_User" Association="Self.FK_Review_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ReviewUserTrainer" EntitySet="ReviewUserTrainer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_User1" Association="Self.FK_Review_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="ReviewUserTrainer" EntitySet="ReviewUserTrainer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Service_User" Association="Self.FK_Service_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Service" EntitySet="Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Gender" Association="Self.FK_User_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_Dificulty" Association="Self.FK_Workout_Dificulty">
+            <End Role="Dificulty" EntitySet="Dificulty" />
+            <End Role="Workout" EntitySet="Workout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_User1" Association="Self.FK_Workout_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="Workout" EntitySet="Workout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_WorkoutType" Association="Self.FK_Workout_WorkoutType">
+            <End Role="WorkoutType" EntitySet="WorkoutType" />
+            <End Role="Workout" EntitySet="Workout" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="YourFitnessModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="returnHistoryChangeUser_Result">
+          <Property Name="FS" Type="String" MaxLength="301" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NewHeight" Type="Int32" />
+          <Property Name="NewWeitght" Type="Int32" />
+          <Property Name="ImageBack" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ImageFront" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ImageSide" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DataChange" Type="DateTime" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Dificulty">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Workout" Relationship="Self.FK_Workout_Dificulty" FromRole="Dificulty" ToRole="Workout" />
+        </EntityType>
+        <EntityType Name="Exercise">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="600" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="isQtyInSecond" Type="Boolean" Nullable="false" />
+          <Property Name="PathToGif" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ExerciseWorkout" Relationship="Self.FK_ExerciseWorkout_Exercise" FromRole="Exercise" ToRole="ExerciseWorkout" />
+          <NavigationProperty Name="MuscleTypeExercise" Relationship="Self.FK_MuscleTypeExercise_Exercise" FromRole="Exercise" ToRole="MuscleTypeExercise" />
+        </EntityType>
+        <EntityType Name="ExerciseWorkout">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDExercise" Type="Int32" Nullable="false" />
+          <Property Name="IDWorkout" Type="Int32" Nullable="false" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Exercise" Relationship="Self.FK_ExerciseWorkout_Exercise" FromRole="ExerciseWorkout" ToRole="Exercise" />
+          <NavigationProperty Name="Workout" Relationship="Self.FK_ExerciseWorkout_Workout" FromRole="ExerciseWorkout" ToRole="Workout" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Gender" FromRole="Gender" ToRole="User" />
+        </EntityType>
+        <EntityType Name="HistoryChange">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDUser" Type="Int32" Nullable="false" />
+          <Property Name="NewWeitght" Type="Int32" />
+          <Property Name="NewHeight" Type="Int32" />
+          <Property Name="ImageFront" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ImageSide" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ImageBack" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DataChange" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="User" Relationship="Self.FK_HistoryChange_User" FromRole="HistoryChange" ToRole="User" />
+        </EntityType>
+        <EntityType Name="HistoryWorkoutUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDWorkout" Type="Int32" Nullable="false" />
+          <Property Name="IDUser" Type="Int32" Nullable="false" />
+          <Property Name="DateWorkout" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_HistoryWorkoutUser_User" FromRole="HistoryWorkoutUser" ToRole="User" />
+          <NavigationProperty Name="Workout" Relationship="Self.FK_HistoryWorkoutUser_Workout" FromRole="HistoryWorkoutUser" ToRole="Workout" />
+        </EntityType>
+        <EntityType Name="LikeNewsUser">
+          <Key>
+            <PropertyRef Name="IDNews" />
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="IDNews" Type="Int32" Nullable="false" />
+          <Property Name="IDUser" Type="Int32" Nullable="false" />
+          <Property Name="IsLike" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="News" Relationship="Self.FK_LikeNewsUser_News" FromRole="LikeNewsUser" ToRole="News" />
+          <NavigationProperty Name="User" Relationship="Self.FK_LikeNewsUser_User" FromRole="LikeNewsUser" ToRole="User" />
+        </EntityType>
+        <EntityType Name="LikeWorkout">
+          <Key>
+            <PropertyRef Name="IDWorkout" />
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="IDWorkout" Type="Int32" Nullable="false" />
+          <Property Name="IDUser" Type="Int32" Nullable="false" />
+          <Property Name="IsLike" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_LikeWorkout_User" FromRole="LikeWorkout" ToRole="User" />
+          <NavigationProperty Name="Workout" Relationship="Self.FK_LikeWorkout_Workout" FromRole="LikeWorkout" ToRole="Workout" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDUserSent" Type="Int32" Nullable="false" />
+          <Property Name="IDUserGet" Type="Int32" Nullable="false" />
+          <Property Name="TimeSent" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Message_User" FromRole="Message" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_Message_User1" FromRole="Message" ToRole="User" />
+        </EntityType>
+        <EntityType Name="MuscleType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MuscleTypeExercise" Relationship="Self.FK_MuscleTypeExercise_MuscleType" FromRole="MuscleType" ToRole="MuscleTypeExercise" />
+        </EntityType>
+        <EntityType Name="MuscleTypeExercise">
+          <Key>
+            <PropertyRef Name="IDMuscleTypeExercise" />
+          </Key>
+          <Property Name="IDMuscleTypeExercise" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDMuscleType" Type="Int32" Nullable="false" />
+          <Property Name="IDExercise" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Exercise" Relationship="Self.FK_MuscleTypeExercise_Exercise" FromRole="MuscleTypeExercise" ToRole="Exercise" />
+          <NavigationProperty Name="MuscleType" Relationship="Self.FK_MuscleTypeExercise_MuscleType" FromRole="MuscleTypeExercise" ToRole="MuscleType" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDUser" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDWorkout" Type="Int32" />
+          <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="timeCreate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="LikeNewsUser" Relationship="Self.FK_LikeNewsUser_News" FromRole="News" ToRole="LikeNewsUser" />
+          <NavigationProperty Name="User" Relationship="Self.FK_News_User" FromRole="News" ToRole="User" />
+          <NavigationProperty Name="Workout" Relationship="Self.FK_News_Workout" FromRole="News" ToRole="Workout" />
+          <NavigationProperty Name="NewsComment" Relationship="Self.FK_NewsComment_News" FromRole="News" ToRole="NewsComment" />
+        </EntityType>
+        <EntityType Name="NewsComment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDNews" Type="Int32" Nullable="false" />
+          <Property Name="IDUser" Type="Int32" Nullable="false" />
+          <Property Name="TimeSentComment" Type="DateTime" Precision="3" />
+          <Property Name="Comment" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="News" Relationship="Self.FK_NewsComment_News" FromRole="NewsComment" ToRole="News" />
+          <NavigationProperty Name="User" Relationship="Self.FK_NewsComment_User" FromRole="NewsComment" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ReviewUserTrainer">
+          <Key>
+            <PropertyRef Name="IDUserTrainer" />
+            <PropertyRef Name="IDUserReview" />
+          </Key>
+          <Property Name="IDUserTrainer" Type="Int32" Nullable="false" />
+          <Property Name="IDUserReview" Type="Int32" Nullable="false" />
+          <Property Name="Review" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Review_User" FromRole="ReviewUserTrainer" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_Review_User1" FromRole="ReviewUserTrainer" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="IDUser" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Service_User" FromRole="Service" ToRole="User" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Salt" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="IDGender" Type="Int32" Nullable="false" />
+          <Property Name="IDRole" Type="Int32" Nullable="false" />
+          <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ImageProfile" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="380" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionTrainer" Type="String" MaxLength="380" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_User_Gender" FromRole="User" ToRole="Gender" />
+          <NavigationProperty Name="HistoryChange" Relationship="Self.FK_HistoryChange_User" FromRole="User" ToRole="HistoryChange" />
+          <NavigationProperty Name="HistoryWorkoutUser" Relationship="Self.FK_HistoryWorkoutUser_User" FromRole="User" ToRole="HistoryWorkoutUser" />
+          <NavigationProperty Name="LikeNewsUser" Relationship="Self.FK_LikeNewsUser_User" FromRole="User" ToRole="LikeNewsUser" />
+          <NavigationProperty Name="LikeWorkout" Relationship="Self.FK_LikeWorkout_User" FromRole="User" ToRole="LikeWorkout" />
+          <NavigationProperty Name="Message" Relationship="Self.FK_Message_User" FromRole="User" ToRole="Message" />
+          <NavigationProperty Name="Message1" Relationship="Self.FK_Message_User1" FromRole="User" ToRole="Message" />
+          <NavigationProperty Name="News" Relationship="Self.FK_News_User" FromRole="User" ToRole="News" />
+          <NavigationProperty Name="NewsComment" Relationship="Self.FK_NewsComment_User" FromRole="User" ToRole="NewsComment" />
+          <NavigationProperty Name="ReviewUserTrainer" Relationship="Self.FK_Review_User" FromRole="User" ToRole="ReviewUserTrainer" />
+          <NavigationProperty Name="ReviewUserTrainer1" Relationship="Self.FK_Review_User1" FromRole="User" ToRole="ReviewUserTrainer" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Service" Relationship="Self.FK_Service_User" FromRole="User" ToRole="Service" />
+          <NavigationProperty Name="WorkoutReaction" Relationship="Self.FK_Comment_User" FromRole="User" ToRole="WorkoutReaction" />
+          <NavigationProperty Name="Workout" Relationship="Self.FK_Workout_User1" FromRole="User" ToRole="Workout" />
+        </EntityType>
+        <EntityType Name="Workout">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDUser" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePath" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="IDDificulty" Type="Int32" />
+          <Property Name="IDWorkoutType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dificulty" Relationship="Self.FK_Workout_Dificulty" FromRole="Workout" ToRole="Dificulty" />
+          <NavigationProperty Name="ExerciseWorkout" Relationship="Self.FK_ExerciseWorkout_Workout" FromRole="Workout" ToRole="ExerciseWorkout" />
+          <NavigationProperty Name="HistoryWorkoutUser" Relationship="Self.FK_HistoryWorkoutUser_Workout" FromRole="Workout" ToRole="HistoryWorkoutUser" />
+          <NavigationProperty Name="LikeWorkout" Relationship="Self.FK_LikeWorkout_Workout" FromRole="Workout" ToRole="LikeWorkout" />
+          <NavigationProperty Name="News" Relationship="Self.FK_News_Workout" FromRole="Workout" ToRole="News" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Workout_User1" FromRole="Workout" ToRole="User" />
+          <NavigationProperty Name="WorkoutReaction" Relationship="Self.FK_Comment_Workout" FromRole="Workout" ToRole="WorkoutReaction" />
+          <NavigationProperty Name="WorkoutType" Relationship="Self.FK_Workout_WorkoutType" FromRole="Workout" ToRole="WorkoutType" />
+        </EntityType>
+        <EntityType Name="WorkoutReaction">
+          <Key>
+            <PropertyRef Name="IDWorkout" />
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="IDWorkout" Type="Int32" Nullable="false" />
+          <Property Name="IDUser" Type="Int32" Nullable="false" />
+          <Property Name="TimeSent" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Review" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Comment_User" FromRole="WorkoutReaction" ToRole="User" />
+          <NavigationProperty Name="Workout" Relationship="Self.FK_Comment_Workout" FromRole="WorkoutReaction" ToRole="Workout" />
+        </EntityType>
+        <EntityType Name="WorkoutType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Workout" Relationship="Self.FK_Workout_WorkoutType" FromRole="WorkoutType" ToRole="Workout" />
+        </EntityType>
+        <EntityType Name="DetailInformationAboutTrainer">
+          <Key>
+            <PropertyRef Name="FIO" />
+            <PropertyRef Name="Mail" />
+            <PropertyRef Name="Login" />
+          </Key>
+          <Property Name="FIO" Type="String" MaxLength="301" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="380" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="AvgRatingWorkout" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="QtyCreatedWorkout" Type="Int32" />
+          <Property Name="QtyNegative" Type="Int32" />
+          <Property Name="Services" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DetailInformationAboutWorkout">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Creator" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Dificulty" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Creator" Type="String" MaxLength="301" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QtyCompletedWorkout" Type="Int32" />
+          <Property Name="Rating" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="ExerciseInWorkout" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ExerciseInWorkoutDistinct" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TopNewsForAWeek">
+          <Key>
+            <PropertyRef Name="FioCreator" />
+            <PropertyRef Name="Description" />
+            <PropertyRef Name="timeCreate" />
+          </Key>
+          <Property Name="FioCreator" Type="String" MaxLength="301" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="timeCreate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QtyLikes" Type="Int32" />
+          <Property Name="QtyComments" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_Workout_Dificulty">
+          <End Role="Dificulty" Type="Self.Dificulty" Multiplicity="0..1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dificulty">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="IDDificulty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExerciseWorkout_Exercise">
+          <End Role="Exercise" Type="Self.Exercise" Multiplicity="1" />
+          <End Role="ExerciseWorkout" Type="Self.ExerciseWorkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ExerciseWorkout">
+              <PropertyRef Name="IDExercise" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MuscleTypeExercise_Exercise">
+          <End Role="Exercise" Type="Self.Exercise" Multiplicity="1" />
+          <End Role="MuscleTypeExercise" Type="Self.MuscleTypeExercise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exercise">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MuscleTypeExercise">
+              <PropertyRef Name="IDExercise" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExerciseWorkout_Workout">
+          <End Role="Workout" Type="Self.Workout" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ExerciseWorkout" Type="Self.ExerciseWorkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workout">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ExerciseWorkout">
+              <PropertyRef Name="IDWorkout" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IDGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoryChange_User">
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HistoryChange" Type="Self.HistoryChange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HistoryChange">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoryWorkoutUser_User">
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HistoryWorkoutUser" Type="Self.HistoryWorkoutUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HistoryWorkoutUser">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoryWorkoutUser_Workout">
+          <End Role="Workout" Type="Self.Workout" Multiplicity="1" />
+          <End Role="HistoryWorkoutUser" Type="Self.HistoryWorkoutUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workout">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HistoryWorkoutUser">
+              <PropertyRef Name="IDWorkout" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeNewsUser_News">
+          <End Role="News" Type="Self.News" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LikeNewsUser" Type="Self.LikeNewsUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LikeNewsUser">
+              <PropertyRef Name="IDNews" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeNewsUser_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="LikeNewsUser" Type="Self.LikeNewsUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LikeNewsUser">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeWorkout_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="LikeWorkout" Type="Self.LikeWorkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LikeWorkout">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LikeWorkout_Workout">
+          <End Role="Workout" Type="Self.Workout" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="LikeWorkout" Type="Self.LikeWorkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workout">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LikeWorkout">
+              <PropertyRef Name="IDWorkout" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="IDUserSent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_User1">
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="IDUserGet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MuscleTypeExercise_MuscleType">
+          <End Role="MuscleType" Type="Self.MuscleType" Multiplicity="1" />
+          <End Role="MuscleTypeExercise" Type="Self.MuscleTypeExercise" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MuscleType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MuscleTypeExercise">
+              <PropertyRef Name="IDMuscleType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_News_Workout">
+          <End Role="Workout" Type="Self.Workout" Multiplicity="0..1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workout">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="IDWorkout" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NewsComment_News">
+          <End Role="News" Type="Self.News" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="NewsComment" Type="Self.NewsComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="News">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NewsComment">
+              <PropertyRef Name="IDNews" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NewsComment_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="NewsComment" Type="Self.NewsComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NewsComment">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="ReviewUserTrainer" Type="Self.ReviewUserTrainer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ReviewUserTrainer">
+              <PropertyRef Name="IDUserTrainer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_User1">
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ReviewUserTrainer" Type="Self.ReviewUserTrainer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ReviewUserTrainer">
+              <PropertyRef Name="IDUserReview" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IDRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Service_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Service" Type="Self.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="WorkoutReaction" Type="Self.WorkoutReaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="WorkoutReaction">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_User1">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="IDUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Workout">
+          <End Role="Workout" Type="Self.Workout" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WorkoutReaction" Type="Self.WorkoutReaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Workout">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="WorkoutReaction">
+              <PropertyRef Name="IDWorkout" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Workout_WorkoutType">
+          <End Role="WorkoutType" Type="Self.WorkoutType" Multiplicity="1" />
+          <End Role="Workout" Type="Self.Workout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkoutType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Workout">
+              <PropertyRef Name="IDWorkoutType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="YourFitnessEntities4" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Dificulty" EntityType="Self.Dificulty" />
+          <EntitySet Name="Exercise" EntityType="Self.Exercise" />
+          <EntitySet Name="ExerciseWorkout" EntityType="Self.ExerciseWorkout" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" />
+          <EntitySet Name="HistoryChange" EntityType="Self.HistoryChange" />
+          <EntitySet Name="HistoryWorkoutUser" EntityType="Self.HistoryWorkoutUser" />
+          <EntitySet Name="LikeNewsUser" EntityType="Self.LikeNewsUser" />
+          <EntitySet Name="LikeWorkout" EntityType="Self.LikeWorkout" />
+          <EntitySet Name="Message" EntityType="Self.Message" />
+          <EntitySet Name="MuscleType" EntityType="Self.MuscleType" />
+          <EntitySet Name="MuscleTypeExercise" EntityType="Self.MuscleTypeExercise" />
+          <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="NewsComment" EntityType="Self.NewsComment" />
+          <EntitySet Name="ReviewUserTrainer" EntityType="Self.ReviewUserTrainer" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Service" EntityType="Self.Service" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="Workout" EntityType="Self.Workout" />
+          <EntitySet Name="WorkoutReaction" EntityType="Self.WorkoutReaction" />
+          <EntitySet Name="WorkoutType" EntityType="Self.WorkoutType" />
+          <EntitySet Name="DetailInformationAboutTrainer" EntityType="Self.DetailInformationAboutTrainer" />
+          <EntitySet Name="DetailInformationAboutWorkout" EntityType="Self.DetailInformationAboutWorkout" />
+          <EntitySet Name="TopNewsForAWeek" EntityType="Self.TopNewsForAWeek" />
+          <AssociationSet Name="FK_Workout_Dificulty" Association="Self.FK_Workout_Dificulty">
+            <End Role="Dificulty" EntitySet="Dificulty" />
+            <End Role="Workout" EntitySet="Workout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExerciseWorkout_Exercise" Association="Self.FK_ExerciseWorkout_Exercise">
+            <End Role="Exercise" EntitySet="Exercise" />
+            <End Role="ExerciseWorkout" EntitySet="ExerciseWorkout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MuscleTypeExercise_Exercise" Association="Self.FK_MuscleTypeExercise_Exercise">
+            <End Role="Exercise" EntitySet="Exercise" />
+            <End Role="MuscleTypeExercise" EntitySet="MuscleTypeExercise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExerciseWorkout_Workout" Association="Self.FK_ExerciseWorkout_Workout">
+            <End Role="Workout" EntitySet="Workout" />
+            <End Role="ExerciseWorkout" EntitySet="ExerciseWorkout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Gender" Association="Self.FK_User_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoryChange_User" Association="Self.FK_HistoryChange_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="HistoryChange" EntitySet="HistoryChange" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoryWorkoutUser_User" Association="Self.FK_HistoryWorkoutUser_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="HistoryWorkoutUser" EntitySet="HistoryWorkoutUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoryWorkoutUser_Workout" Association="Self.FK_HistoryWorkoutUser_Workout">
+            <End Role="Workout" EntitySet="Workout" />
+            <End Role="HistoryWorkoutUser" EntitySet="HistoryWorkoutUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeNewsUser_News" Association="Self.FK_LikeNewsUser_News">
+            <End Role="News" EntitySet="News" />
+            <End Role="LikeNewsUser" EntitySet="LikeNewsUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeNewsUser_User" Association="Self.FK_LikeNewsUser_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="LikeNewsUser" EntitySet="LikeNewsUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeWorkout_User" Association="Self.FK_LikeWorkout_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="LikeWorkout" EntitySet="LikeWorkout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LikeWorkout_Workout" Association="Self.FK_LikeWorkout_Workout">
+            <End Role="Workout" EntitySet="Workout" />
+            <End Role="LikeWorkout" EntitySet="LikeWorkout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_User" Association="Self.FK_Message_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_User1" Association="Self.FK_Message_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MuscleTypeExercise_MuscleType" Association="Self.FK_MuscleTypeExercise_MuscleType">
+            <End Role="MuscleType" EntitySet="MuscleType" />
+            <End Role="MuscleTypeExercise" EntitySet="MuscleTypeExercise" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_User" Association="Self.FK_News_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_News_Workout" Association="Self.FK_News_Workout">
+            <End Role="Workout" EntitySet="Workout" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewsComment_News" Association="Self.FK_NewsComment_News">
+            <End Role="News" EntitySet="News" />
+            <End Role="NewsComment" EntitySet="NewsComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewsComment_User" Association="Self.FK_NewsComment_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="NewsComment" EntitySet="NewsComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_User" Association="Self.FK_Review_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ReviewUserTrainer" EntitySet="ReviewUserTrainer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_User1" Association="Self.FK_Review_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="ReviewUserTrainer" EntitySet="ReviewUserTrainer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Service_User" Association="Self.FK_Service_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Service" EntitySet="Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_User" Association="Self.FK_Comment_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="WorkoutReaction" EntitySet="WorkoutReaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_User1" Association="Self.FK_Workout_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="Workout" EntitySet="Workout" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Workout" Association="Self.FK_Comment_Workout">
+            <End Role="Workout" EntitySet="Workout" />
+            <End Role="WorkoutReaction" EntitySet="WorkoutReaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Workout_WorkoutType" Association="Self.FK_Workout_WorkoutType">
+            <End Role="WorkoutType" EntitySet="WorkoutType" />
+            <End Role="Workout" EntitySet="Workout" />
+          </AssociationSet>
+          <FunctionImport Name="returnHistoryChangeUser" IsComposable="true" ReturnType="Collection(YourFitnessModel.returnHistoryChangeUser_Result)">
+            <Parameter Name="IDUser" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getDurationWorkoutInSecProc" ReturnType="Collection(Int32)">
+            <Parameter Name="IDWrkout" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="qtyHourOnMuscleForUser" ReturnType="Collection(YourFitnessModel.qtyHourOnMuscleForUser_Result)">
+            <Parameter Name="IDUser" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="qtyHourWorkoutUser" ReturnType="Collection(YourFitnessModel.qtyHourWorkoutUser_Result)">
+            <Parameter Name="IDUser" Mode="In" Type="Int32" />
+            <Parameter Name="FirstDate" Mode="In" Type="DateTime" />
+            <Parameter Name="SecondDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="qtyMuscleInWorkout" ReturnType="Collection(YourFitnessModel.qtyMuscleInWorkout_Result)">
+            <Parameter Name="IDWorkout" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(YourFitnessModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(YourFitnessModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="qtyHourOnMuscleForUser_Result">
+          <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="TimeInMinute" Nullable="true" />
+          <Property Type="Decimal" Name="percent" Nullable="true" Precision="7" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="qtyHourWorkoutUser_Result">
+          <Property Type="Int32" Name="qtyMinute" Nullable="true" />
+          <Property Type="String" Name="day" Nullable="true" MaxLength="5" />
+        </ComplexType>
+        <ComplexType Name="qtyMuscleInWorkout_Result">
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="qty" Nullable="true" />
+          <Property Type="Int32" Name="qtyInPercent" Nullable="true" />
+          <Property Type="Int32" Name="width" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище YourFitnessModelContainer" CdmEntityContainer="YourFitnessEntities4">
+          <EntitySetMapping Name="Dificulty">
+            <EntityTypeMapping TypeName="YourFitnessModel.Dificulty">
+              <MappingFragment StoreEntitySet="Dificulty">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exercise">
+            <EntityTypeMapping TypeName="YourFitnessModel.Exercise">
+              <MappingFragment StoreEntitySet="Exercise">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="isQtyInSecond" ColumnName="isQtyInSecond" />
+                <ScalarProperty Name="PathToGif" ColumnName="PathToGif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExerciseWorkout">
+            <EntityTypeMapping TypeName="YourFitnessModel.ExerciseWorkout">
+              <MappingFragment StoreEntitySet="ExerciseWorkout">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDExercise" ColumnName="IDExercise" />
+                <ScalarProperty Name="IDWorkout" ColumnName="IDWorkout" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="YourFitnessModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistoryChange">
+            <EntityTypeMapping TypeName="YourFitnessModel.HistoryChange">
+              <MappingFragment StoreEntitySet="HistoryChange">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="NewWeitght" ColumnName="NewWeitght" />
+                <ScalarProperty Name="NewHeight" ColumnName="NewHeight" />
+                <ScalarProperty Name="ImageFront" ColumnName="ImageFront" />
+                <ScalarProperty Name="ImageSide" ColumnName="ImageSide" />
+                <ScalarProperty Name="ImageBack" ColumnName="ImageBack" />
+                <ScalarProperty Name="DataChange" ColumnName="DataChange" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistoryWorkoutUser">
+            <EntityTypeMapping TypeName="YourFitnessModel.HistoryWorkoutUser">
+              <MappingFragment StoreEntitySet="HistoryWorkoutUser">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDWorkout" ColumnName="IDWorkout" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="DateWorkout" ColumnName="DateWorkout" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LikeNewsUser">
+            <EntityTypeMapping TypeName="YourFitnessModel.LikeNewsUser">
+              <MappingFragment StoreEntitySet="LikeNewsUser">
+                <ScalarProperty Name="IDNews" ColumnName="IDNews" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="IsLike" ColumnName="IsLike" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LikeWorkout">
+            <EntityTypeMapping TypeName="YourFitnessModel.LikeWorkout">
+              <MappingFragment StoreEntitySet="LikeWorkout">
+                <ScalarProperty Name="IDWorkout" ColumnName="IDWorkout" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="IsLike" ColumnName="IsLike" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Message">
+            <EntityTypeMapping TypeName="YourFitnessModel.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Message1" ColumnName="Message" />
+                <ScalarProperty Name="IDUserSent" ColumnName="IDUserSent" />
+                <ScalarProperty Name="IDUserGet" ColumnName="IDUserGet" />
+                <ScalarProperty Name="TimeSent" ColumnName="TimeSent" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MuscleType">
+            <EntityTypeMapping TypeName="YourFitnessModel.MuscleType">
+              <MappingFragment StoreEntitySet="MuscleType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MuscleTypeExercise">
+            <EntityTypeMapping TypeName="YourFitnessModel.MuscleTypeExercise">
+              <MappingFragment StoreEntitySet="MuscleTypeExercise">
+                <ScalarProperty Name="IDMuscleTypeExercise" ColumnName="IDMuscleTypeExercise" />
+                <ScalarProperty Name="IDMuscleType" ColumnName="IDMuscleType" />
+                <ScalarProperty Name="IDExercise" ColumnName="IDExercise" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="YourFitnessModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IDWorkout" ColumnName="IDWorkout" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="timeCreate" ColumnName="timeCreate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsComment">
+            <EntityTypeMapping TypeName="YourFitnessModel.NewsComment">
+              <MappingFragment StoreEntitySet="NewsComment">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDNews" ColumnName="IDNews" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="TimeSentComment" ColumnName="TimeSentComment" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReviewUserTrainer">
+            <EntityTypeMapping TypeName="YourFitnessModel.ReviewUserTrainer">
+              <MappingFragment StoreEntitySet="ReviewUserTrainer">
+                <ScalarProperty Name="IDUserTrainer" ColumnName="IDUserTrainer" />
+                <ScalarProperty Name="IDUserReview" ColumnName="IDUserReview" />
+                <ScalarProperty Name="Review" ColumnName="Review" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="YourFitnessModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Service">
+            <EntityTypeMapping TypeName="YourFitnessModel.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="YourFitnessModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="YourFitnessModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="IDGender" ColumnName="IDGender" />
+                <ScalarProperty Name="IDRole" ColumnName="IDRole" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="ImageProfile" ColumnName="ImageProfile" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DescriptionTrainer" ColumnName="DescriptionTrainer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Workout">
+            <EntityTypeMapping TypeName="YourFitnessModel.Workout">
+              <MappingFragment StoreEntitySet="Workout">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="IDDificulty" ColumnName="IDDificulty" />
+                <ScalarProperty Name="IDWorkoutType" ColumnName="IDWorkoutType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkoutReaction">
+            <EntityTypeMapping TypeName="YourFitnessModel.WorkoutReaction">
+              <MappingFragment StoreEntitySet="WorkoutReaction">
+                <ScalarProperty Name="IDWorkout" ColumnName="IDWorkout" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="TimeSent" ColumnName="TimeSent" />
+                <ScalarProperty Name="Review" ColumnName="Review" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkoutType">
+            <EntityTypeMapping TypeName="YourFitnessModel.WorkoutType">
+              <MappingFragment StoreEntitySet="WorkoutType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailInformationAboutTrainer">
+            <EntityTypeMapping TypeName="YourFitnessModel.DetailInformationAboutTrainer">
+              <MappingFragment StoreEntitySet="DetailInformationAboutTrainer">
+                <ScalarProperty Name="FIO" ColumnName="FIO" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="AvgRatingWorkout" ColumnName="AvgRatingWorkout" />
+                <ScalarProperty Name="QtyCreatedWorkout" ColumnName="QtyCreatedWorkout" />
+                <ScalarProperty Name="QtyNegative" ColumnName="QtyNegative" />
+                <ScalarProperty Name="Services" ColumnName="Services" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailInformationAboutWorkout">
+            <EntityTypeMapping TypeName="YourFitnessModel.DetailInformationAboutWorkout">
+              <MappingFragment StoreEntitySet="DetailInformationAboutWorkout">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Dificulty" ColumnName="Dificulty" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="QtyCompletedWorkout" ColumnName="QtyCompletedWorkout" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="ExerciseInWorkout" ColumnName="ExerciseInWorkout" />
+                <ScalarProperty Name="ExerciseInWorkoutDistinct" ColumnName="ExerciseInWorkoutDistinct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TopNewsForAWeek">
+            <EntityTypeMapping TypeName="YourFitnessModel.TopNewsForAWeek">
+              <MappingFragment StoreEntitySet="TopNewsForAWeek">
+                <ScalarProperty Name="FioCreator" ColumnName="FioCreator" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="timeCreate" ColumnName="timeCreate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="QtyLikes" ColumnName="QtyLikes" />
+                <ScalarProperty Name="QtyComments" ColumnName="QtyComments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="Хранилище YourFitnessModel.returnHistoryChangeUser" FunctionImportName="returnHistoryChangeUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="YourFitnessModel.returnHistoryChangeUser_Result">
+                <ScalarProperty Name="FS" ColumnName="FS" />
+                <ScalarProperty Name="NewHeight" ColumnName="NewHeight" />
+                <ScalarProperty Name="NewWeitght" ColumnName="NewWeitght" />
+                <ScalarProperty Name="ImageBack" ColumnName="ImageBack" />
+                <ScalarProperty Name="ImageFront" ColumnName="ImageFront" />
+                <ScalarProperty Name="ImageSide" ColumnName="ImageSide" />
+                <ScalarProperty Name="DataChange" ColumnName="DataChange" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getDurationWorkoutInSecProc" FunctionName="Хранилище YourFitnessModel.getDurationWorkoutInSecProc" />
+          <FunctionImportMapping FunctionImportName="qtyHourOnMuscleForUser" FunctionName="Хранилище YourFitnessModel.qtyHourOnMuscleForUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="YourFitnessModel.qtyHourOnMuscleForUser_Result">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="TimeInMinute" ColumnName="TimeInMinute" />
+                <ScalarProperty Name="percent" ColumnName="percent" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="qtyHourWorkoutUser" FunctionName="Хранилище YourFitnessModel.qtyHourWorkoutUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="YourFitnessModel.qtyHourWorkoutUser_Result">
+                <ScalarProperty Name="qtyMinute" ColumnName="qtyMinute" />
+                <ScalarProperty Name="day" ColumnName="day" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="qtyMuscleInWorkout" FunctionName="Хранилище YourFitnessModel.qtyMuscleInWorkout">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="YourFitnessModel.qtyMuscleInWorkout_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="qtyInPercent" ColumnName="qtyInPercent" />
+                <ScalarProperty Name="width" ColumnName="width" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище YourFitnessModel.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище YourFitnessModel.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище YourFitnessModel.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище YourFitnessModel.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="YourFitnessModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище YourFitnessModel.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="YourFitnessModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище YourFitnessModel.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище YourFitnessModel.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
